@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: argocd-example-nginx-deployment
+    labels:
+        app: argo-nginx
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: argo-nginx
+    template:
+        metadata:
+            labels:
+                app: argo-nginx
+        spec:
+            containers:
+            - name: argo-nginx
+              image: nginx:1.16
+              ports:
+              - containerPort: 80
